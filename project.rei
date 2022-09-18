@@ -21,7 +21,7 @@ license = "LGPL-3"
     src/
         main.rei
         lib.rei
-        common.rei
+        prelude.rei
         components/
             mod.rei
         pages/
