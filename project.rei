@@ -3,6 +3,8 @@ author = "Jason Qin"
 description = "Reid, the IDE"
 license = "LGPL-3"
 
+rei = "2022-0.1"
+
 // HOW DOES PREI work you ask? good question
 // prei new <name> always generates:
 /*
