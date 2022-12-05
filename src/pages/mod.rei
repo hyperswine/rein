@@ -23,7 +23,7 @@ export fn Index(workspace: Workspace) -> Component {
     let saved_page_context = workspace.context.first()? : Context()
     let [curr_context, set_curr_context] = use_state(saved_page_context)
     
-    @arcen Flex {
+    arcen Flex {
         TopBar[curr_context]
     }
 }

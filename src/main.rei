@@ -10,7 +10,7 @@ fn main(config: Config) -> Status {
 }
 
 fn App() -> Component {
-    @arcen {
+    arcen {
         Arcen[router: Router, index: Index] {}
     }
 }

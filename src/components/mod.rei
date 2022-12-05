@@ -9,7 +9,7 @@ enum Context {
 }
 
 export(prelude) fn TopBar(curr_context) -> Component {
-    @arcen Flex[dir=FlexDir::Row] {
+    arcen Flex[dir=FlexDir::Row] {
         LeftSideBar
         
         // Actual TopBar
@@ -20,16 +20,16 @@ export(prelude) fn TopBar(curr_context) -> Component {
 }
 
 fn LeftSideBar(curr_encoding: Encoding) -> Component {
-    let handle_hover_circle = () => @arcen Popup[] {
+    let handle_hover_circle = () => arcen Popup[] {
         Circle {
             // option must implement arcen::Render(props)
             options.map(
-                option => @arcen Box {option}
+                option => arcen Box {option}
             )
         }
     }
 
-    @arcen Flex[dir=Col spacing=SpaceAround] {
+    arcen Flex[dir=Col spacing=SpaceAround] {
         Box {
             // NOTE: the root/ dir is always at the root of the workspace
             Image[src="/assets/circle.png" h=2 on_hover=handle_hover_circle]
@@ -57,5 +57,5 @@ fn OpenFile() -> String | Component {
     let handle_click = () => set_selected_file(arcen::os::filebrowser_open())
     let selected_file, set_selected_file = use_state(File?())
 
-    selected_file? : @arcen FileIcon[on_click=handle_click]
+    selected_file? : arcen FileIcon[on_click=handle_click]
 }
