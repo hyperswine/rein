@@ -1,6 +1,6 @@
-name = "reid"
-author = "Jason Qin"
-description = "Reid, the IDE"
+name = "rein"
+author = "Jasen Qin"
+description = "Rein, the IDE"
 license = "LGPL-3"
 
 rei = "2022-0.1"

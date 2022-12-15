@@ -36,7 +36,7 @@ export Editor: (file: File?) -> Component {
 // REI EDITOR FEATURES
 
 export Rei: (rei_contents: Utf8, lang_server: LangServer) -> Component {
-    arcen {
+    Box {
         // syntax highlighting, code hover, etc based on results from lang server queries
         // like server.query(contents). Maybe just send updated contents
         rei_contents
