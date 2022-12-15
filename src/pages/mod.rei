@@ -2,7 +2,7 @@
     Pages
 *#
 
-fn restore_workspace(filepath: String) -> Workspace {
+restore_workspace: (filepath: String) -> Workspace {
     if let Ok(file) = read_to_string(filepath) {
         // attempt to parse, if works, then return Workspace
         let err = parse_workspace(file)!
@@ -16,7 +16,7 @@ fn restore_workspace(filepath: String) -> Workspace {
     workspace
 }
 
-export fn Index(workspace: Workspace) -> Component {
+export Index: (workspace: Workspace) -> Component {
     // restore context from settings when you open app
 
     // get context from workspace, if no context available, render an empty page

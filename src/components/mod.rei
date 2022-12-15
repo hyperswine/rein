@@ -2,14 +2,15 @@
     Components
 *#
 
-enum Context {
+Context: enum {
+    // same thing as Editor = String("Editor")
     Editor = "Editor"
     Store = "Store"
     Settings = "Settings"
 }
 
-export(prelude) fn TopBar(curr_context) -> Component {
-    arcen Flex[dir=FlexDir::Row] {
+export(prelude) TopBar: (curr_context) -> Component {
+    arcen => Flex[dir=FlexDir::Row] {
         LeftSideBar
         
         // Actual TopBar
@@ -19,17 +20,17 @@ export(prelude) fn TopBar(curr_context) -> Component {
     }
 }
 
-fn LeftSideBar(curr_encoding: Encoding) -> Component {
-    let handle_hover_circle = () => arcen Popup[] {
+LeftSideBar: (curr_encoding: Encoding) -> Component {
+    let handle_hover_circle = () => (arcen => Popup[] {
         Circle {
             // option must implement arcen::Render(props)
             options.map(
                 option => arcen Box {option}
             )
         }
-    }
+    })
 
-    arcen Flex[dir=Col spacing=SpaceAround] {
+    arcen => Flex[dir=Col spacing=SpaceAround] {
         Box {
             // NOTE: the root/ dir is always at the root of the workspace
             Image[src="/assets/circle.png" h=2 on_hover=handle_hover_circle]
@@ -52,10 +53,10 @@ fn LeftSideBar(curr_encoding: Encoding) -> Component {
 // call system's API through arcen::os::filebrowser_open
 // should show a file icon and allow a file to be read into RAM and returned to caller
 // anon tagged unions allowed, and various tricks exist to reduce memory footprint like compression and reducing copies
-fn OpenFile() -> String | Component {
+OpenFile: () -> String | Component {
     // OS should open its file browser and allow user to select a single file, returned to arcen
     let handle_click = () => set_selected_file(arcen::os::filebrowser_open())
     let selected_file, set_selected_file = use_state(File?())
 
-    selected_file? : arcen FileIcon[on_click=handle_click]
+    selected_file? : arcen => FileIcon[on_click=handle_click]
 }
