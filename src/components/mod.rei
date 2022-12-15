@@ -9,8 +9,8 @@ Context: enum {
     Settings = "Settings"
 }
 
-export(prelude) TopBar: (curr_context) -> Component {
-    arcen => Flex[dir=FlexDir::Row] {
+export(prelude) TopBar: (curr_context: _) -> Component {
+    Flex[dir=FlexDir::Row] {
         LeftSideBar
         
         // Actual TopBar
@@ -20,17 +20,19 @@ export(prelude) TopBar: (curr_context) -> Component {
     }
 }
 
+// => works with replace too
+
 LeftSideBar: (curr_encoding: Encoding) -> Component {
-    let handle_hover_circle = () => (arcen => Popup[] {
+    let handle_hover_circle = () => (Popup[] {
         Circle {
             // option must implement arcen::Render(props)
             options.map(
-                option => arcen Box {option}
+                option => Box { option }
             )
         }
     })
 
-    arcen => Flex[dir=Col spacing=SpaceAround] {
+    Flex[dir=Col spacing=SpaceAround] {
         Box {
             // NOTE: the root/ dir is always at the root of the workspace
             Image[src="/assets/circle.png" h=2 on_hover=handle_hover_circle]
@@ -58,5 +60,8 @@ OpenFile: () -> String | Component {
     let handle_click = () => set_selected_file(arcen::os::filebrowser_open())
     let selected_file, set_selected_file = use_state(File?())
 
-    selected_file? : arcen => FileIcon[on_click=handle_click]
+    // instead of returing the file, return a component that displays it? Nope
+    selected_file? : FileIcon[on_click=handle_click]
 }
+
+ScrollableTextArea: () -> Component => _

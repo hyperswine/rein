@@ -10,7 +10,5 @@ main: (config: Config) -> Status {
 }
 
 App: () -> Component {
-    arcen {
-        Arcen[router: Router, index: Index] {}
-    }
+    Arcen[router: Router, index: Index]
 }
